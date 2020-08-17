@@ -3,7 +3,9 @@ var loading = `<div class="spinner-border text-light" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>`
 
-// search button clicked -----------------------------------------------------------start()----------------------------------------------------
+                
+
+// search button clicked
 document.getElementById("inputForm").addEventListener('submit', start);
 function start(e) {
     resetField();
@@ -28,14 +30,17 @@ function start(e) {
         })
     e.preventDefault();
 }
-// search button clicked  end --------------------------------------------------------start() end-------------------------------------------------
 
 
-// display suggestions  --------------------------------------------------displaySuggestion()---------------------------------------------
+
+// display suggestions 
 function displaySuggestion(allData) {
     let data = allData.data;
     console.log(data);
-    // pushing 10 suggestion in let[] ------------------------
+
+
+
+    // 10 suggestion
     let list = [];
     for (let i = 0; i < 10; i++) {
         const item = {
@@ -50,7 +55,10 @@ function displaySuggestion(allData) {
     }
     console.log(list);
 
-    //  html display suggestion  -------------------------------html display suggestion in "display-result" id
+
+
+
+    //  html display suggestion
     let display = document.getElementById("display-result");
     display.innerHTML = "";
     document.querySelector('.single-result').style.display = "block";
@@ -71,11 +79,12 @@ function displaySuggestion(allData) {
             </div>
             <div class="bottom-line"></div>`
     }
-    //  html display suggestion  end ------------------------------
 }
-// display suggestions  end ---------------------------------------------------displaySuggestion() end------------------------------------------
 
-// get the lyrics from clicked suggestions  ---------------------------------------getLyrics()--------------------------------------------------------
+
+
+
+// get the lyrics from clicked suggestions
 
 const getLyrics = (title, artistName, albumImage, artistImage) => {
     console.log(title, artistName);
@@ -87,9 +96,12 @@ const getLyrics = (title, artistName, albumImage, artistImage) => {
         .then(data => displayLyrics(data, title, artistName, albumImage, artistImage))
         .catch(err => console.log(err))
 }
-// get the lyrics from clicked suggestions  ---------------------------------------getLyrics() end--------------------------------------------------------
 
-// display lyrics from getLyrics  ---------------------------------------displayLyrics()--------------------------------------------------------
+
+
+
+
+// display lyrics from getLyrics
 
 const displayLyrics = (data, title, artistName, albumImage, artistImage) => {
 
@@ -103,10 +115,11 @@ const displayLyrics = (data, title, artistName, albumImage, artistImage) => {
         document.getElementById("get-lyrics").innerText = "Sorry! Lyrics is not found.";
     }
 }
-// display lyrics from getLyrics  ---------------------------------------displayLyrics() end--------------------------------------------------------
 
 
-// reset the id fields ------------------------------------------------------------------------------------------------
+
+
+// reset the id fields
 const resetField = () => {
     document.getElementById("song-image").innerHTML = "";
     document.getElementById("search-result").innerText = "";
